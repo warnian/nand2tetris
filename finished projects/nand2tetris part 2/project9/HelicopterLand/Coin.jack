@@ -1,0 +1,119 @@
+//coin.jack
+//coins for helicopter to collect and methods for collision
+//contains coin method and coin collect effect
+//location= (x/16) + (y*32)
+//screen is 256 rows by 512 columns
+class Coin{
+    field Helicopter heli;
+    field int x;
+    field int y;
+    field int location;
+    field boolean Collected;
+    field int score;
+    constructor Coin new(int Ax, int Ay){
+        let x=Ax;
+        let y=Ay;
+        let location=((x/16)+(y*32));
+        do coindraw(location);
+        let Collected = false;
+        return this;
+
+    }
+    method void dispose() {
+      
+      do Memory.deAlloc(this);
+      return;
+   }
+    method int get_loc(){
+        return location;
+
+    }
+   
+    method boolean coinIsCollected(Helicopter helo){ //check if coind is collected
+        
+        var boolean Collect;
+        var int heli_x;
+        var int heli_y;
+        let heli_x = helo.get_x();
+        let heli_y = helo.get_y();
+        let Collect=false;
+
+        if (((Math.abs(x-heli_x))<18)&((Math.abs(y-heli_y))<18)){ //condition for coin being collected
+            let Collect=true; 
+            
+            }
+        
+        
+        return Collect;
+    }
+    method void setCoinCollect(boolean bool){
+        let Collected=bool;
+        return;
+    }
+    method boolean getCoinCollect(){
+        return Collected;
+    }
+    
+
+    method void coindraw(int location) { //bitmap of coin
+        
+        do Memory.poke((16384+location)+0, 4080);
+        do Memory.poke((16384+location)+32, 6168);
+        do Memory.poke((16384+location)+64, 12300);
+        do Memory.poke((16384+location)+96, 24710);
+        do Memory.poke((16384+location)+128, -15389);
+        do Memory.poke((16384+location)+160, -32095);
+        do Memory.poke((16384+location)+192, -32607);
+        do Memory.poke((16384+location)+224, -32607);
+        do Memory.poke((16384+location)+256, -31775);
+        do Memory.poke((16384+location)+288, -32127);
+        do Memory.poke((16384+location)+320, -32127);
+        do Memory.poke((16384+location)+352, -15709);
+        do Memory.poke((16384+location)+384, 25574);
+        do Memory.poke((16384+location)+416, 12428);
+        do Memory.poke((16384+location)+448, 6168);
+        do Memory.poke((16384+location)+480, 4080);
+        return;
+    }
+    method void collectEffect(int location) { //bitmap of effect when coin is collected
+
+        do Memory.poke((16384+location)+0, -32511);
+        do Memory.poke((16384+location)+32, 0);
+        do Memory.poke((16384+location)+64, 0);
+        do Memory.poke((16384+location)+96, 4360);
+        do Memory.poke((16384+location)+128, 0);
+        do Memory.poke((16384+location)+160, 0);
+        do Memory.poke((16384+location)+192, 0);
+        do Memory.poke((16384+location)+224, 0);
+        do Memory.poke((16384+location)+256, -30703);
+        do Memory.poke((16384+location)+288, 0);
+        do Memory.poke((16384+location)+320, 0);
+        do Memory.poke((16384+location)+352, 0);
+        do Memory.poke((16384+location)+384, 2320);
+        do Memory.poke((16384+location)+416, 0);
+        do Memory.poke((16384+location)+448, 0);
+        do Memory.poke((16384+location)+480, 16642);
+        return;
+    }
+method void eraser(int location){
+		
+		do Memory.poke((16384+location)+0, 0);
+        do Memory.poke((16384+location)+32, 0);
+        do Memory.poke((16384+location)+64, 0);
+        do Memory.poke((16384+location)+96, 0);
+        do Memory.poke((16384+location)+128, 0);
+        do Memory.poke((16384+location)+160, 0);
+        do Memory.poke((16384+location)+192, 0);
+        do Memory.poke((16384+location)+224, 0);
+        do Memory.poke((16384+location)+256, 0);
+        do Memory.poke((16384+location)+288, 0);
+        do Memory.poke((16384+location)+320, 0);
+        do Memory.poke((16384+location)+352, 0);
+        do Memory.poke((16384+location)+384, 0);
+        do Memory.poke((16384+location)+416, 0);
+        do Memory.poke((16384+location)+448, 0);
+        do Memory.poke((16384+location)+480, 0);
+        return;
+    }
+}
+

@@ -1,0 +1,163 @@
+
+//implements HeloLandGame
+
+class HelicopterGame{
+    field Helicopter helo;
+    
+    field Coin coin1;
+    field Coin coin2;
+    field Coin coin3;
+    field Coin coin4;
+    field int fly_cond; //fly yes or no? 
+    field int game_start;
+    field int score; 
+    constructor HelicopterGame new(){
+        let helo = Helicopter.new(256,0);
+        let coin1 = Coin.new(50,50);
+        let coin2 = Coin.new(145,200);
+        let coin3 = Coin.new(300,75);
+        let coin4 = Coin.new(400,175);
+        
+        let fly_cond=0;
+        let game_start=0;
+        let score=0;
+        return this;
+    }
+    /** Disposes this game. */
+    method void dispose() {
+        do square.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+    method void moveHelicopter() {
+      if (fly_cond = 1) { 
+          do helo.fly_up(); 
+          do Sys.wait(5);
+          }
+      if (fly_cond = 2) { 
+          do helo.fly_left(); 
+          do Sys.wait(5);
+          }
+      if (fly_cond = 3) { 
+          do helo.fly_right(); 
+          do Sys.wait(5);
+    }
+      if (fly_cond = 4) { 
+          do helo.fly_down(); 
+          do Sys.wait(5);
+      }
+      else {
+          do Sys.wait(5);
+      }
+
+      return;
+   }
+    method void run() {
+        var char key;  // the key currently pressed by the user
+        var boolean exit;
+        let exit = false;
+        do Output.printInt(score); //init score
+        
+
+
+        
+            while (~exit) { //while not exit the game
+                
+                if (coin1.coinIsCollected(helo)&(~coin1.getCoinCollect())){//checks if the heli is close (ie meets collect conditions) and if it has not already been collected
+                    do coin1.eraser(coin1.get_loc());
+                    do coin1.collectEffect(coin1.get_loc());
+                    do Sys.wait(400);
+                    do coin1.eraser(coin1.get_loc());
+                    let score=score+1;
+                    do Output.backSpace();
+                    do Output.printInt(score);
+                    do coin1.setCoinCollect(true);
+                    do coin1.dispose();
+                }
+                if (coin2.coinIsCollected(helo)&(~coin2.getCoinCollect())){//checks if the heli is close (ie meets collect conditions) and if it has not already been collected
+                    do coin2.eraser(coin2.get_loc());
+                    do coin2.collectEffect(coin2.get_loc());
+                    do Sys.wait(400);
+                    do coin2.eraser(coin2.get_loc());
+                    let score = score+1;
+                    do Output.backSpace();
+                    do Output.printInt(score);
+                    do coin2.setCoinCollect(true);
+                    do coin2 .dispose();
+                    
+                }
+                if (coin3.coinIsCollected(helo)&(~coin3.getCoinCollect())){ //checks if the heli is close (ie meets collect conditions) and if it has not already been collected
+                    do coin3.eraser(coin3.get_loc());
+                    do coin3.collectEffect(coin3.get_loc());
+                    do Sys.wait(400);
+                    do coin1.eraser(coin3.get_loc());
+                    let score = score+1;
+                    do Output.backSpace();
+                    do Output.printInt(score);
+                    do coin3.setCoinCollect(true);
+                    do coin3.dispose();
+                }
+                if (coin4.coinIsCollected(helo)&(~coin4.getCoinCollect())){//checks if the heli is close (ie meets collect conditions) and if it has not already been collected
+                    do coin4.eraser(coin4.get_loc());
+                    do coin4.collectEffect(coin4.get_loc());
+                    do Sys.wait(400);
+                    do coin1.eraser(coin4.get_loc());
+                    let score = score +1;
+                    do Output.backSpace();
+                    do Output.printInt(score);
+                    do coin4.setCoinCollect(true);
+                    do coin4.dispose();
+                }
+                    
+            // waits for a key to be pressed
+                    while (key = 0) {
+                        let key = Keyboard.keyPressed();
+                        do Screen.setColor(false);
+                        do helo.helicopterdraw(helo.get_cur_location());
+                        do Screen.setColor(true);
+                        do helo.helicopterdraw2(helo.get_cur_location());
+                        do helo.helo_land_logo(496/16);
+                        do Sys.wait(5);
+                        do helo.helicopterdraw(helo.get_cur_location());
+                    }
+                    if (key = 81)  { let exit = true; }     // q key quits game
+                    if (key=32){ //space bar starts game
+                        let game_start=1;
+                    }
+                    if (key = 131) {  //up arrow fly up
+                        let fly_cond = 1; 
+                        let game_start =1;
+                    }
+                
+                    
+                    if (key = 130) { //left arrow fly left
+                        let fly_cond= 2; 
+                        let game_start=1;
+                        
+                    }  
+                    if (key = 132) { //right arrow fly right
+                        let fly_cond = 3; 
+                        let game_start=1;
+                    }   
+                    if (key = 133) { //down arrow fly down
+                        let fly_cond = 4; 
+                        let game_start=1;
+                    }   
+
+            
+            
+
+            
+                    while (~(key = 0)) {// waits for the key to be released
+                        let key = Keyboard.keyPressed();
+                        do moveHelicopter();
+                    }
+            }
+        return;
+    }
+         
+          
+} 
+     
+
+

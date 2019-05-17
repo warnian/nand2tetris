@@ -1,0 +1,1009 @@
+function Helicopter.new 0
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push this 0
+push constant 16
+call Math.divide 2
+push this 1
+push constant 32
+call Math.multiply 2
+add
+pop this 3
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push pointer 0
+push constant 412
+push constant 16
+call Math.divide 2
+push constant 480
+push constant 16
+call Math.multiply 2
+add
+call Helicopter.landingPadDraw 2
+pop temp 0
+push pointer 0
+return
+function Helicopter.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Helicopter.erase 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push pointer 0
+push constant 256
+push constant 16
+call Math.divide 2
+push constant 510
+push constant 16
+call Math.multiply 2
+add
+call Helicopter.landingPadDraw 2
+pop temp 0
+push constant 0
+return
+function Helicopter.get_cur_location 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function Helicopter.get_x 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Helicopter.get_y 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Helicopter.fly_up 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 1
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 0
+push constant 16
+call Math.divide 2
+push this 1
+push constant 1
+sub
+push constant 32
+call Math.multiply 2
+add
+call Helicopter.helicopterdraw 2
+pop temp 0
+push this 1
+push constant 2
+sub
+pop this 1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 16
+call Math.divide 2
+push this 1
+push constant 32
+call Math.multiply 2
+add
+pop this 3
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw2 2
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 15
+call Sys.wait 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Helicopter.fly_down 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 236
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push this 1
+push constant 2
+add
+pop this 1
+push this 0
+push constant 16
+call Math.divide 2
+push this 1
+push constant 32
+call Math.multiply 2
+add
+pop this 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw2 2
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 15
+call Sys.wait 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Helicopter.fly_left 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 2
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.eraser 2
+pop temp 0
+push this 0
+push constant 1
+sub
+pop this 0
+push this 0
+push constant 16
+call Math.divide 2
+push this 1
+push constant 32
+call Math.multiply 2
+add
+pop this 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw2 2
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Helicopter.fly_right 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 480
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.eraser 2
+pop temp 0
+push this 0
+push constant 1
+add
+pop this 0
+push this 0
+push constant 16
+call Math.divide 2
+push this 1
+push constant 32
+call Math.multiply 2
+add
+pop this 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw2 2
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push pointer 0
+push this 3
+call Helicopter.helicopterdraw 2
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Helicopter.helicopterdraw 0
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 64
+add
+push constant 128
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 128
+add
+push constant 32766
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 160
+add
+push constant 128
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 192
+add
+push constant 128
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 224
+add
+push constant 130
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 256
+add
+push constant 8135
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 288
+add
+push constant 9250
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 320
+add
+push constant 17470
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 352
+add
+push constant 31750
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 384
+add
+push constant 16396
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 416
+add
+push constant 16376
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 448
+add
+push constant 32764
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Helicopter.helicopterdraw2 0
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 64
+add
+push constant 128
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 160
+add
+push constant 128
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 192
+add
+push constant 128
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 224
+add
+push constant 130
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 256
+add
+push constant 8135
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 288
+add
+push constant 9250
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 320
+add
+push constant 17470
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 352
+add
+push constant 31750
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 384
+add
+push constant 16396
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 416
+add
+push constant 16376
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 448
+add
+push constant 32764
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Helicopter.helo_land_logo 0
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+push constant 0
+add
+push constant 7447
+neg
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 32
+add
+push constant 24023
+neg
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 64
+add
+push constant 23825
+neg
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 96
+add
+push constant 24023
+neg
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 128
+add
+push constant 4375
+neg
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 192
+add
+push constant 26913
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 224
+add
+push constant 21679
+neg
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 256
+add
+push constant 21135
+neg
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 288
+add
+push constant 22191
+neg
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 320
+add
+push constant 26967
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 448
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Helicopter.landingPadDraw 0
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 416
+add
+push constant 16380
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 448
+add
+push constant 16386
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 480
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Helicopter.eraser 0
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 448
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 16384
+push argument 1
+add
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
