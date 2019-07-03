@@ -1,0 +1,77 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Sys.jack
+
+/**
+ * A library that supports various program execution services.
+ */
+class Sys {
+
+    /** Performs all the initializations required by the OS. */
+    function void init() {
+        do Memory.init();
+        do Keyboard.init();
+        do Math.init();
+        do Output.init();
+        do Screen.init();
+        do Main.main();
+        do Sys.halt();
+        return; 
+    }
+
+    /** Halts the program execution. */
+    function void halt() {
+        while(true){
+
+        }
+        return;
+    }
+
+    /** Waits approximately duration milliseconds and returns.  */
+    function void wait(int duration) {
+        //just about 2 second on my CPU, slightly over might brick something old
+        var int i;
+        var int j;
+        var int k;
+        var int x;
+        var int y;
+        let i = 1;
+        let j = 1;
+        let k = 1;
+        let x = 1;
+        let i = i * duration * 800;
+        let j = j * duration * 800;
+        let k = k * duration * 800;
+        let x = x * duration * 800;
+        let y = y * duration * 800;
+        while (i>0){
+            while (j>0){
+                while (k>0){
+                    while (x>0){
+                        while (y>0){
+                            let y = y - 1;
+                        }
+                        let x = x - 1;
+                    }
+                    let k = k -1;
+                }
+                let j = j - 1;
+            }
+            let i=i-1;
+            
+        }
+        return;
+    }
+
+    /** Displays the given error code in the form "ERR<errorCode>",
+     *  and halts the program's execution. */
+    function void error(int errorCode) {
+
+        do Output.printString("ERR<");
+        do Output.printInt(errorCode);
+        do Output.printChar(">");
+        do Sys.halt();
+        return;
+    }
+}
