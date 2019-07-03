@@ -13,3 +13,4 @@ The OS for the computer was developed in the JACK language in project 12 which i
 Once these programs were finished the computer was a fully implemented 16 bit platform which could be extended to include greater functionality.
 
 
+Ultimately most of the algorithms and software design for the later projects was provided by the book and course information. Our job was to implement the solutions from a generic suggested API in whatever way we saw fit. Primarily I learned a lot about the underlying function of assemblers, VMtranslators, and compilers and the unique challenges in programming these. While this was a compiler for a very basic language it still challenged me greatly. I learned a lot about how to use Python specifically and how compilers, assemblers and VMtranslators work. I would highly recommend this course.
