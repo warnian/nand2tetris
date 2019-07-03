@@ -1,13 +1,12 @@
 project 11 readme
 
+overall completed. Could be reimplemented for better system of looking ahead in characters to determine what the compiler needs to do. A better implementation instead of having a function which looks ahead, would be to have a static pointer which can be added or substracted to to keep the current position of which token you are looking at. 
 
+This would be a more consistent and workable system. 
 
-#SYMBOL TABLE NOT WORKING <=-------big concern ### seems to be working now monday 6/10 11:15am
-#something going on with class level symbol table
-#EXPRESSION LIST NOT STOPPING CORRECTLY #think its solved 6/10 3:02 pm
-#Compile let functioning for now
-#while not working #### FIXED as of 6/11 1:58 PM
-#if not working maybe related to while ###### fixed as of 6/11 1:58 PM
+ I started to run into problems with certain edge cases and either had to make specific exceptions or rework the system.  I implemented certain extensions where this happened as rewriting the entire logic would be troublesome. The main problem I had was double writing certain pop variables after calling an expression list with an arithmetic symbol being in the expression. It would write the expression correctly but before advancing the tokenizer, write the last command after the arithmetic. If you advance it within the expression list it would put the tokenizer in the wrong place causing a sort of waterfall effect of problems. The only way I found in isolation to fix this problem on a systemic scale was to rewrite the entire code to function around this change as I would have to then change the tokenizer system so I decided to implement solutions for the edge cases on a case by case basis. This could (and I assume would) bite me if this system was deployed in a more rigorous industrial setting. 
+ 
+ Very challenging project but satisfying to get working.
 
 #succesfully compiles:
 Seven: #completed
